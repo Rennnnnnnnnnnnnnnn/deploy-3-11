@@ -12,7 +12,7 @@ import inventory from './routes/inventory.js';
 
 dotenv.config();  // Load environment variables from .env file
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 10000;
 
 
 app.use(cors());  // Enable CORS
