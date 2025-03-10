@@ -14,14 +14,12 @@ dotenv.config();  // Load environment variables from .env file
 const app = express();
 const port = process.env.PORT || 8000;
 
+
 app.use(cors());  // Enable CORS
 app.use(express.json());  // Parse incoming JSON requests
 app.use(express.urlencoded({ extended: true }));
 
-// Root route handler
-app.get('/', (req, res) => {
-  res.send('Welcome to the API!');
-});
+
 
 // API routes
 app.use('/api/batch', batch);  // Transactions routes
