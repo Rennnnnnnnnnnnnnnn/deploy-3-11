@@ -10,23 +10,25 @@ import transactions from './routes/transactions.js';
 import batch from './routes/batch.js';
 import inventory from './routes/inventory.js';
 
-
 dotenv.config();  // Load environment variables from .env file
 const app = express();
 const port = process.env.PORT || 8000;
 
 app.use(cors());  // Enable CORS
 app.use(express.json());  // Parse incoming JSON requests
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.urlencoded({ extended: true }));
 
+// Root route handler
+app.get('/', (req, res) => {
+  res.send('Welcome to the API!');
+});
 
-
+// API routes
 app.use('/api/batch', batch);  // Transactions routes
 app.use('/api/auth', authRoutes);  // Authentication routes
 app.use('/api/accounts', accounts);  // Accounts routes
 app.use('/api/transactions', transactions);  // Transactions routes
-app.use('/api/inventory', inventory); 
-
+app.use('/api/inventory', inventory);
 
 // Middleware
 app.use(logger);  // Optional logger
@@ -36,5 +38,5 @@ app.use(errorHandler);
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
